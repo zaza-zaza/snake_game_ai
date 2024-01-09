@@ -69,7 +69,7 @@ class QTrainer:
         # pred.clone()
         # predictions[argsmax(action)] = Q_new
         self.optimizer.zero_grad()
-        self.criterion(target, pred)
+        loss = self.criterion(target, pred)
         loss.backward()
 
         self.optimizer.step()

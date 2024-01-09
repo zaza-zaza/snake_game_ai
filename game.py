@@ -31,7 +31,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 20
+SPEED = 100
 
 class SnakeGameAI:
     
@@ -46,19 +46,19 @@ class SnakeGameAI:
         
 
 
-        def reset(self):
-            # init game state for the agent.py to start
-            self.direction = Direction.RIGHT
+    def reset(self):
+        # init game state for the agent.py to start
+        self.direction = Direction.RIGHT
 
-            self.head = Point(self.w / 2, self.h / 2)
-            self.snake = [self.head,
-                          Point(self.head.x - BLOCK_SIZE, self.head.y),
-                          Point(self.head.x - (2 * BLOCK_SIZE), self.head.y)]
+        self.head = Point(self.w / 2, self.h / 2)
+        self.snake = [self.head,
+                      Point(self.head.x - BLOCK_SIZE, self.head.y),
+                      Point(self.head.x - (2 * BLOCK_SIZE), self.head.y)]
 
-            self.score = 0
-            self.food = None
-            self._place_food()
-            self.frame_iteration = 0
+        self.score = 0
+        self.food = None
+        self._place_food()
+        self.frame_iteration = 0
 
         
     def _place_food(self):
@@ -104,7 +104,7 @@ class SnakeGameAI:
     
     def is_collision(self, pt=None):
         if pt is None:
-            pt = self.Head
+            pt = self.head
         # hits boundary
         if pt.x > self.w - BLOCK_SIZE or pt.x < 0 or pt.y > self.h - BLOCK_SIZE or pt.y < 0:
             return True
